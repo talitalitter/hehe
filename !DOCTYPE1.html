@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lava a Louça?</title>
+    <!-- Link para a fonte do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Definindo a fonte e o fundo */
+        body {
+            font-family: 'Pacifico', cursive; /* Fonte mais estilosa */
+            background-color: rgba(255, 0, 0, 0.7); /* Fundo vermelho com transparência */
+            background-image: url('https://www.pngall.com/wp-content/uploads/5/Red-Heart-PNG-Image.png'); /* Imagem de coração */
+            background-repeat: repeat; /* Repetir o padrão de corações */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Sombra suave nas letras */
+        }
+
+        /* Container centralizado */
+        .container {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.2); /* Fundo suave para o container */
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Sombra ao redor do container */
+            width: 80%;
+            max-width: 400px;
+        }
+
+        /* Título com efeito */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Sombra mais forte para o título */
+        }
+
+        /* Estilo dos botões */
+        .button {
+            background-color: #FF5733; /* Cor de fundo vermelha */
+            color: white;
+            font-size: 20px;
+            border: none;
+            padding: 15px 32px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #FF2A00; /* Alteração de cor ao passar o mouse */
+        }
+
+        .button:active {
+            transform: scale(0.95); /* Efeito de "clicar" */
+        }
+
+        .button:focus {
+            outline: none; /* Remove o contorno do botão ao clicar */
+        }
+
+        /* Efeito de movimento do botão "Não" */
+        .button.moving {
+            transition: all 0.5s ease;
+        }
+
+        /* Estilo da mensagem */
+        .message {
+            font-size: 1.8em;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00; /* Cor dourada */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
+        }
+
+        /* Estilo do coração na frente da mensagem */
+        .heart {
+            color: #FF2A00;
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lava a louça para sempre?</h1>
+        <button class="button" onclick="resposta('sim')">Sim</button>
+        <button class="button" id="naoBtn" onmouseover="moverBotao()" disabled>Não</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Função para mover o botão "Não"
+        function moverBotao() {
+            const naoBtn = document.getElementById("naoBtn");
+
+            // Gerar uma posição aleatória dentro da tela
+            const randomX = Math.floor(Math.random() * 70) + 10; // Posição aleatória em porcentagem
+            const randomY = Math.floor(Math.random() * 70) + 10; // Posição aleatória em porcentagem
+
+            naoBtn.style.position = "absolute";
+            naoBtn.style.left = randomX + "%";
+            naoBtn.style.top = randomY + "%";
+            naoBtn.style.transition = "all 0.5s ease"; // Suaviza o movimento
+            naoBtn.classList.add('moving'); // Adiciona a classe de movimento para suavizar
+        }
+
+        // Função para exibir a mensagem quando clicar em "Sim"
+        function resposta(resposta) {
+            const messageDiv = document.getElementById("message");
+
+            if (resposta === 'sim') {
+                messageDiv.innerHTML = "<span class='heart'>❤️</span>Melhor marido do mundo!";
+            }
+        }
+    </script>
+</body>
+</html>
